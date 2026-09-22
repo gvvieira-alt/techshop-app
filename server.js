@@ -65,8 +65,7 @@ app.get('/api/estoque', async (req, res) => {
   } catch (error) {
     res.status(500).json({ erro: error.message });
   }
-});
-
+}); 
 app.get('/api/clientes', async (req, res) => {
   try {
     const [rows] = await pool.query('SELECT id_cliente, nome, email FROM clientes');
@@ -87,7 +86,7 @@ app.put('/api/produtos/:id', verificarAcesso('Admin'), async (req, res) => {
     if (result.affectedRows === 0) {
       return res.status(404).json({ erro: 'Produto não encontrado.' });
     }
-    res.json({ mensagem: 'Estoque updated com sucesso com privilégios de Admin!' });
+    res.json({ mensagem: 'Estoque atualizado com sucesso com privilégios de Admin!' });
   } catch (error) {
     res.status(500).json({ erro: error.message });
   }
